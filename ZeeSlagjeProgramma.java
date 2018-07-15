@@ -1,5 +1,5 @@
-//Voor inleveren: verander - (boot) in ~ (water), omdat je anders kan zien wat je doet
-//Verwijder ongebruikte dingen
+//Voor echt spel: verander - (boot) in ~ (water), omdat je anders kan zien wat je doet.
+//Voor gebruiksvriendelijkheid: verander 0 t/m 2 en 0t/m7 in 1 t/m 3 en 1 t/m 8.
 
 package zeeslagje;
 
@@ -8,6 +8,7 @@ import java.util.Scanner;
 class ZeeSlagjeProgramma {
 
 	public static void main(String[] args) {
+		System.out.println("Welkom! Het is aan jou drie boten te laten zinken!" + "\n" + "Kies je doelwit zorgvuldig uit door de coördinaten te bepalen." + "\n" + "Kies eerst tussen lijn 1 tot en met 3 en daarna op kolom 1 tot en met 6. Succes!");
 
 	//	Maakt een zee aan: 0 = water, 1 = boot, 2 = gezonkenboot	
 		int[][] Zee = new int[3][6];
@@ -37,9 +38,7 @@ class ZeeSlagjeProgramma {
 		
 		if (Aantalkeergeraakt[0] == 3) {
 			System.out.println("Je hebt gewonnen!");
-		}
-		
-		
+		}		
 	}
 	
 	public static void printZee (int[][] Zee) {
@@ -92,7 +91,7 @@ class ZeeSlagjeProgramma {
 			System.out.println("Raak!");
 			Zee[DoelwitOpRij][DoelwitOpKolom] = 2;
 			Aantalkeergeraakt[0]++; //Waarom moet dit specifiek een array zijn, geen integer?
-			System.out.println("Je hebt al " +Aantalkeergeraakt[0] + " doelwit geraakt!");
+			System.out.println("Je hebt al " +Aantalkeergeraakt[0] + " keer iets geraakt!");
 			System.out.println(" ");
 		}
 	}
