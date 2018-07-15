@@ -8,20 +8,33 @@ import java.util.Scanner;
 class ZeeSlagjeProgramma {
 
 	public static void main(String[] args) {
-		Boot boot1 = new Boot();
-		Water water1 = new Water();
-		GezonkenBoot gezonkenboot1 = new GezonkenBoot();
 
 	//	Maakt een zee aan: 0 = water, 1 = boot, 2 = gezonkenboot	
-		int[] Zee = new int[10];
+		int[] Zee = new int[5];
 		Zee[3] = 1;
 		Zee[4] = 1;
 		Zee[5] = 1;
 		
-		printZee (Zee);
-//		schieten(Zee);
+		int[] Schot = new int[10];
+		int i = 0;
+		int[] Aantalkeergeraakt = new int [1]; //Waarom moet dit specifiek een array zijn, geen integer?
+		Aantalkeergeraakt[0] = 0;
+		
+		while (Aantalkeergeraakt[0] < 3) {
+		
+			printZee (Zee);
+			schieten(Schot); 
+			int Doelwit = Schot[i];
+			raken(Doelwit, Zee, Aantalkeergeraakt);
+			}
+		
+		if (Aantalkeergeraakt[0] == 3) {
+			System.out.println("Je hebt gewonnen!");
+		}
+		
 		
 	}
+	
 	public static void printZee (int[] Zee) {
 		int i = 0;
 		for (i = 0; i < Zee.length; i++) {
@@ -42,29 +55,26 @@ class ZeeSlagjeProgramma {
 		System.out.println(" ");
 	}
 
-	
-	public static int schieten (int[] Zee){
+	public static int schieten (int[] Schot){
+		int i = 0;
 		Scanner input = new Scanner(System.in);
 		System.out.println("Schiet op positie: ");
-		Zee[0] = input.nextInt();
-		System.out.println("Je hebt geschoten op: "+ Zee[0]);
-		return input.nextInt();
+		Schot[i] = input.nextInt();
+		System.out.println("Je hebt geschoten op: "+ Schot[i]);
+		return Schot[i];
+	}
+	
+	public static void raken (int Doelwit, int[] Zee, int[] Aantalkeergeraakt) {
+		if(Zee[Doelwit] == 0) {
+			System.out.println("Mis!");
+			Zee[Doelwit] = -1;
+		}	
+		if(Zee[Doelwit] == 1) {
+			System.out.println("Raak!");
+			Zee[Doelwit] = 2;
+			Aantalkeergeraakt[0]++; //Waarom moet dit specifiek een array zijn, geen integer?
+			System.out.println("Je hebt al " +Aantalkeergeraakt[0] + " doelwit geraakt!");
+		}
 	}
 	
 }	
-	
-class Zee{
-
-}
-
-class Water{
-	
-}
-
-class Boot{
-	
-}
-
-class GezonkenBoot{
-	
-}
